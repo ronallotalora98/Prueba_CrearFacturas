@@ -1,0 +1,105 @@
+<div class="container mt-5">
+  <h2>Crear Factura</h2>
+
+  <form>
+
+    <div class="row">
+
+      <div class="form-group col-md-6">
+        <label for="idCliente">Cliente</label>
+        <select class="form-control" id="idCliente" [(ngModel)]="crearFactura.idCliente">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-3">
+        <label for="numeroFactura">Numero de Factura</label>
+        <input type="text" id="NumeroFactura" class="form-control" [(ngModel)]="crearFactura.numeroFactura">
+      </div>
+
+      <div class="form-group col-md-3"></div>
+
+
+
+      <!-- Espacio para ListarProductos -->
+
+      <div class="col-3 mt-3">
+        <button type="button" class="btn btn-primary" (click)="addNewProduct()">Agregar Producto</button>
+      </div>
+
+      <div class="col-md-12 mt-3" *ngIf="listadoProductos.length >= 1">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Producto</th>
+              <th scope="col">Precio Unitario</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Imagen</th>
+              <th scope="col">Totales</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of listadoProductos;">
+              <td>
+                <div class="form-group">
+                  <select class="form-control" id="idCliente" [(ngModel)]="item.idProducto">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+              </td>
+              <td>{{item.precioUnitarioProducto}}</td>
+              <td>
+                <div class="form-group col-md-3">
+                <input type="number" id="cantidad" class="form-control" [(ngModel)]="item.cantidadDeProducto">
+              </div>
+            </td>
+              <td></td>
+              <td>{{item.total}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-md-8"></div>
+
+      <div class="col-md-4" *ngIf="listadoProductos.length >= 1">
+        <div class="col-md-12 mt-3">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>SubTotal</th>
+                <th>{{crearFactura.subTotalFacturas}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Impuesto (19%)</th>
+                <td>{{crearFactura.totalImpuestos}}</td>
+              </tr>
+              <tr>
+                <th>Total</th>
+                <td>{{crearFactura.totalFactura}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+
+      <div class="col-12">
+        <button type="button" class="btn btn-success" >Guardar</button>
+      </div>
+
+
+      </div>
+  </form>
+</div>
